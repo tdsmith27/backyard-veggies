@@ -19,9 +19,12 @@
   "homepage": "https://github.com/tdsmith27/mvp-project#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
