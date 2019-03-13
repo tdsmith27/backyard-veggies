@@ -19,11 +19,7 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    // Axios.get("/crawl")
-    //   .then(response => console.log(response))
-    //   .catch(err => console.log("error"));
-  }
+  componentDidMount() {}
 
   changeState(e) {
     let state = e.target.value;

@@ -1,12 +1,13 @@
 import React, { Fragment } from "react";
+import VeggieListEntry from "./VeggieListEntry";
 
 const VeggieList = ({ veggies }) => (
   <>
-    <ul>
+    <div className="veggieList">
       {veggies.map((veggie, key) => (
-        <li key={key}>{veggie}</li>
+        <VeggieListEntry veggie={veggie} key={key} />
       ))}
-    </ul>
+    </div>
   </>
 );
 

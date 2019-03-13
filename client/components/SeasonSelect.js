@@ -3,29 +3,29 @@ import React, { Fragment } from "react";
 const SeasonSelect = ({ changeSeason }) => (
   <select onChange={changeSeason}>
     <option value="early-january">Early-January</option>
-    <option value="late-January">Late-January</option>
-    <option value="early-February">Early-February</option>
-    <option value="late-February">Late-February</option>
-    <option value="early-March">Early-March</option>
-    <option value="late-March">Late-March</option>
-    <option value="early-April">Early-April</option>
-    <option value="late-April">Late-April</option>
-    <option value="early-May">Early-May</option>
-    <option value="late-May">Late-May</option>
-    <option value="early-June">Early-June</option>
-    <option value="late-June">Late-June</option>
-    <option value="early-July">Early-July</option>
-    <option value="late-July">Late-July</option>
-    <option value="early-August">Early-August</option>
-    <option value="late-August">Late-August</option>
-    <option value="early-September">Early-September</option>
-    <option value="late-September">Late-September</option>
-    <option value="early-October">Early-October</option>
-    <option value="late-October">Late-October</option>
-    <option value="early-November">Early-November</option>
-    <option value="late-November">Late-November</option>
-    <option value="early-December">Early-December</option>
-    <option value="late-December">Late-December</option>
+    <option value="late-january">Late-January</option>
+    <option value="early-february">Early-February</option>
+    <option value="late-february">Late-February</option>
+    <option value="early-march">Early-March</option>
+    <option value="late-march">Late-March</option>
+    <option value="early-april">Early-April</option>
+    <option value="late-april">Late-April</option>
+    <option value="early-may">Early-May</option>
+    <option value="late-may">Late-May</option>
+    <option value="early-june">Early-June</option>
+    <option value="late-june">Late-June</option>
+    <option value="early-july">Early-July</option>
+    <option value="late-july">Late-July</option>
+    <option value="early-august">Early-August</option>
+    <option value="late-august">Late-August</option>
+    <option value="early-september">Early-September</option>
+    <option value="late-september">Late-September</option>
+    <option value="early-october">Early-October</option>
+    <option value="late-october">Late-October</option>
+    <option value="early-november">Early-November</option>
+    <option value="late-november">Late-November</option>
+    <option value="early-december">Early-December</option>
+    <option value="late-december">Late-December</option>
   </select>
 );
 
