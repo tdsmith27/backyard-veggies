@@ -2,7 +2,10 @@ import React, { Fragment } from "react";
 
 const RecipeListEntry = ({ recipe }) => (
   <Fragment>
-    <p>{recipe.recipe.label}</p>
+    <div className="recipe">
+      <p className="recipeLabel">{recipe.recipe.label}</p>
+      <img className="recipeImage" src={recipe.recipe.image} />
+    </div>
   </Fragment>
 );
 

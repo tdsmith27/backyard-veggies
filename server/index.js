@@ -20,8 +20,7 @@ app.get("/recipes/:ingredients/", (req, res) => {
     }&q=${ingredients}`
   )
     .then(response => {
-      console.log("response.data: ", response.data);
-      res.json(response.data.hits.slice(0, 11));
+      res.json(response.data.hits.slice(0, 8));
     })
     .catch(err => {
       console.log("err: ", err);
@@ -31,14 +30,12 @@ app.get("/recipes/:ingredients/", (req, res) => {
 app.get("/recipes/:ingredients/:excluded", (req, res) => {
   let ingredients = req.params.ingredients;
   let chain = excludeChain(req.params.excluded);
-  console.log("chain: ", chain);
   Axios.get(
     `https://api.edamam.com/search?app_id=${API.id}&app_key=${
       API.key
     }&q=${ingredients}${chain}`
   )
     .then(response => {
-      console.log("response.data: ", response.data);
       res.json(response.data.hits.slice(0, 11));
     })
     .catch(err => {

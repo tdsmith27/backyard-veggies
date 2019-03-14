@@ -3,9 +3,11 @@ import RecipeListEntry from "./RecipeListEntry";
 
 const RecipeList = ({ recipes }) => (
   <Fragment>
-    {recipes.length
-      ? recipes.map((recipe, key) => <RecipeListEntry recipe={recipe} />)
-      : null}
+    <div className="recipeList">
+      {recipes.map((recipe, key) => (
+        <RecipeListEntry recipe={recipe} />
+      ))}
+    </div>
   </Fragment>
 );
 

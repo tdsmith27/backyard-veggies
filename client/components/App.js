@@ -85,7 +85,6 @@ class App extends Component {
 
   getRecipes() {
     let querystring = `/recipes/${this.state.search}/${this.state.exclude}`;
-    console.log("querystring: ", querystring);
     Axios.get(`/recipes/${this.state.search}/${this.state.exclude}`)
       .then(response => {
         let recipes = response.data;
