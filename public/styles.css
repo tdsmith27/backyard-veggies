@@ -1,3 +1,25 @@
+body {
+  /* background: linear-gradient(to right, #bbd2c5, #536976); */
+  /* background-color: #bbd2c5; */
+  background-color: aliceblue;
+  /* background-color: #f4fdf6; */
+  /* background: linear-gradient(
+    to left,
+    aliceblue,
+    aliceblue,
+    aliceblue,
+    lightgoldenrodyellow
+  ); */
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
 .fetching,
 .notFetching {
   height: 20px;
@@ -8,27 +30,40 @@
   margin-bottom: 20px;
 }
 
-.veggieList {
+.lists {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.listContainer {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  max-width: 50%;
+  margin-right: 10px;
+}
+
+.veggieList {
+  display: flex;
+  flex-flow: row wrap;
   align-items: space-evenly;
-  height: 300px;
-  width: 200px;
+}
+
+.listHead {
+  display: block;
 }
 
 .veggie {
   display: flex;
-  width: 150px;
+  width: 175px;
   margin: 0px 20px 5px 0px;
   border-radius: 5px;
 }
 
-.x {
+.x,
+.o {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: maroon;
   font-weight: bold;
   cursor: pointer;
   height: 20px;
@@ -36,7 +71,15 @@
   background-color: #e6e6e6;
   border: 1px solid gray;
   border-radius: 5px;
+}
+
+.x {
+  color: maroon;
   margin-right: 5px;
+}
+
+.o {
+  color: green;
 }
 
 .v {

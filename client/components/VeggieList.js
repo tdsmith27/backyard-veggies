@@ -1,13 +1,21 @@
 import React, { Fragment } from "react";
 import VeggieListEntry from "./VeggieListEntry";
 
-const VeggieList = ({ veggies, remove }) => (
+const VeggieList = ({ list, veggies, remove, add }) => (
   <>
-    {veggies.length ? <h4>These foods are in season</h4> : null}
-    <div className="veggieList">
-      {veggies.map((veggie, key) => (
-        <VeggieListEntry veggie={veggie} key={key} remove={remove} />
-      ))}
+    <div className="listContainer">
+      {veggies.length ? <h5 className="listHead">{list}</h5> : null}
+      <div className="veggieList">
+        {veggies.map((veggie, key) => (
+          <VeggieListEntry
+            list={list}
+            veggie={veggie}
+            key={key}
+            remove={remove}
+            add={add}
+          />
+        ))}
+      </div>
     </div>
   </>
 );

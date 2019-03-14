@@ -1,15 +1,33 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const rp = require("request-promise");
-const cheerio = require("cheerio");
 const Nightmare = require("nightmare");
 const db = require("../db/index");
+const Axios = require("axios");
+const API = require("../config");
+const { excludeChain } = require("../helpers");
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "./../public"));
+
+app.get("/recipes/:ingredients/:excluded", (req, res) => {
+  let ingredients = req.params.ingredients;
+  let chain = excludeChain(req.params.excluded);
+  Axios.get(
+    `https://api.edamam.com/search?app_id=${API.id}&app_key=${
+      API.key
+    }&q=${ingredients}${chain}`
+  )
+    .then(response => {
+      console.log("response.data: ", response.data);
+      res.json(response.data.hits.slice(0, 11));
+    })
+    .catch(err => {
+      console.log("err: ", err);
+    });
+});
 
 app.get("/seasonal/:state/:season", (req, res) => {
   let state = req.params.state;

@@ -12,11 +12,15 @@ class App extends Component {
     this.changeSeason = this.changeSeason.bind(this);
     this.getSeasonal = this.getSeasonal.bind(this);
     this.removeVeggie = this.removeVeggie.bind(this);
+    this.addVeggie = this.addVeggie.bind(this);
+    this.getRecipes = this.getRecipes.bind(this);
 
     this.state = {
       state: "alabama",
       season: "early-january",
       seasonal: [],
+      search: [],
+      exclude: [],
       fetching: false
     };
   }
@@ -37,21 +41,50 @@ class App extends Component {
     this.setState({ fetching: true }, () => {
       Axios.get(`/seasonal/${this.state.state}/${this.state.season}`)
         .then(response =>
-          this.setState({ seasonal: response.data, fetching: false })
+          this.setState({
+            seasonal: response.data,
+            fetching: false,
+            search: [],
+            exclude: []
+          })
         )
         .catch(err => console.log("error", err));
     });
   }
 
-  removeVeggie(veggie) {
-    let list = this.state.seasonal;
+  removeVeggie(veggie, listType) {
+    let list = this.state[listType];
 
     for (let i = 0; i < list.length; i++) {
       if (list[i] === veggie) {
         list.splice(i, 1);
       }
     }
-    this.setState({ seasonal: list });
+
+    if (listType === "seasonal") {
+      let exclude = this.state.exclude;
+      exclude.push(veggie);
+      this.setState({ listType: list, exclude });
+    } else {
+      this.setState({ listType: list });
+    }
+  }
+
+  addVeggie(veggie) {
+    let search = this.state.search;
+    let seasonal = this.state.seasonal;
+
+    if (!search.includes(veggie)) {
+      search.push(veggie);
+    }
+
+    this.setState({ search });
+  }
+
+  getRecipes() {
+    Axios.get(`/recipes/${this.state.search}/${this.state.exclude}`)
+      .then(response => console.log(response.data))
+      .catch(err => console.log("lol"));
   }
 
   render() {
@@ -67,7 +100,27 @@ class App extends Component {
           <SeasonSelect changeSeason={this.changeSeason} />
           <button onClick={this.getSeasonal}>Get Seasonal Foods</button>
         </div>
-        <VeggieList veggies={this.state.seasonal} remove={this.removeVeggie} />
+        <button onClick={this.getRecipes}>get recipes</button>
+        <div className="lists">
+          <VeggieList
+            list={"seasonal"}
+            veggies={this.state.seasonal}
+            remove={this.removeVeggie}
+            add={this.addVeggie}
+          />
+          <VeggieList
+            list={"search"}
+            veggies={this.state.search}
+            remove={this.removeVeggie}
+            add={this.addVeggie}
+          />
+          <VeggieList
+            list={"exclude"}
+            veggies={this.state.exclude}
+            remove={this.removeVeggie}
+            add={this.addVeggie}
+          />
+        </div>
       </>
     );
   }

@@ -1,8 +1,14 @@
 import React, { Fragment } from "react";
 
-const VeggieListEntry = ({ veggie, remove }) => (
+const VeggieListEntry = ({ list, veggie, remove, add }) => (
   <div className="veggie">
-    <div className="x" onClick={() => remove(veggie)}>
+    {list === "seasonal" ? (
+      <div className="o" onClick={() => add(veggie, list)}>
+        {" "}
+        O{" "}
+      </div>
+    ) : null}
+    <div className="x" onClick={() => remove(veggie, list)}>
       {" "}
       X{" "}
     </div>
