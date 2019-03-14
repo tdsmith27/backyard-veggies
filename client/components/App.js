@@ -3,6 +3,7 @@ import Axios from "axios";
 import StateSelect from "./StateSelect";
 import SeasonSelect from "./SeasonSelect";
 import VeggieList from "./VeggieList";
+import RecipeList from "./RecipeList";
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class App extends Component {
       seasonal: [],
       search: [],
       exclude: [],
+      recipes: [],
       fetching: false
     };
   }
@@ -45,7 +47,8 @@ class App extends Component {
             seasonal: response.data,
             fetching: false,
             search: [],
-            exclude: []
+            exclude: [],
+            recipes: []
           })
         )
         .catch(err => console.log("error", err));
@@ -72,7 +75,6 @@ class App extends Component {
 
   addVeggie(veggie) {
     let search = this.state.search;
-    let seasonal = this.state.seasonal;
 
     if (!search.includes(veggie)) {
       search.push(veggie);
@@ -82,9 +84,14 @@ class App extends Component {
   }
 
   getRecipes() {
+    let querystring = `/recipes/${this.state.search}/${this.state.exclude}`;
+    console.log("querystring: ", querystring);
     Axios.get(`/recipes/${this.state.search}/${this.state.exclude}`)
-      .then(response => console.log(response.data))
-      .catch(err => console.log("lol"));
+      .then(response => {
+        let recipes = response.data;
+        this.setState({ recipes });
+      })
+      .catch(err => console.log("lol", err));
   }
 
   render() {
@@ -121,6 +128,7 @@ class App extends Component {
             add={this.addVeggie}
           />
         </div>
+        <RecipeList recipes={this.state.recipes} />
       </>
     );
   }
