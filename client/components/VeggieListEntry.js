@@ -20,17 +20,11 @@ const buttonStyle = {
 const VeggieListEntry = ({ list, veggie, remove, add }) => (
   <div className="veggie">
     {list === "seasonal" ? (
-      <IconButton
-        style={buttonStyle}
-        // fontSize={"small"}
-        onClick={() => add(veggie)}>
+      <IconButton style={buttonStyle} onClick={() => add(veggie)}>
         <Check style={checkStyle} color={"primary"} />
       </IconButton>
     ) : null}
-    <IconButton
-      style={buttonStyle}
-      // fontSize="small"
-      onClick={() => remove(veggie, list)}>
+    <IconButton style={buttonStyle} onClick={() => remove(veggie, list)}>
       <Close style={closeStyle} color={"secondary"} />
     </IconButton>
     <div className="v">{veggie} </div>

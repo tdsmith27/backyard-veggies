@@ -4,6 +4,9 @@ import StateSelect from "./StateSelect";
 import SeasonSelect from "./SeasonSelect";
 import VeggieList from "./VeggieList";
 import RecipeList from "./RecipeList";
+import { Button, CircularProgress } from "@material-ui/core";
+import { Search } from "@material-ui/icons";
+import { recipeButtonStyle, searchStyle, progressStyle } from "../../helpers";
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +18,7 @@ class App extends Component {
     this.removeVeggie = this.removeVeggie.bind(this);
     this.addVeggie = this.addVeggie.bind(this);
     this.getRecipes = this.getRecipes.bind(this);
+    this.favorite = this.favorite.bind(this);
 
     this.state = {
       state: "alabama",
@@ -23,7 +27,9 @@ class App extends Component {
       search: [],
       exclude: [],
       recipes: [],
-      fetching: false
+      favorites: [],
+      fetchingI: false,
+      fetchingR: false
     };
   }
 
@@ -40,12 +46,12 @@ class App extends Component {
   }
 
   getSeasonal() {
-    this.setState({ fetching: true }, () => {
+    this.setState({ fetchingI: true }, () => {
       Axios.get(`/seasonal/${this.state.state}/${this.state.season}`)
         .then(response =>
           this.setState({
             seasonal: response.data,
-            fetching: false,
+            fetchingI: false,
             search: [],
             exclude: [],
             recipes: []
@@ -84,13 +90,24 @@ class App extends Component {
   }
 
   getRecipes() {
-    let querystring = `/recipes/${this.state.search}/${this.state.exclude}`;
-    Axios.get(`/recipes/${this.state.search}/${this.state.exclude}`)
-      .then(response => {
-        let recipes = response.data;
-        this.setState({ recipes });
-      })
-      .catch(err => console.log("lol", err));
+    this.setState({ fetchingR: true }, () => {
+      Axios.get(`/recipes/${this.state.search}/${this.state.exclude}`)
+        .then(response => {
+          let recipes = response.data;
+          this.setState({ recipes, fetchingR: false });
+        })
+        .catch(err => console.log("lol", err));
+    });
+  }
+
+  favorite(recipe) {
+    let favorites = this.state.favorites;
+
+    if (!favorites.includes(recipe)) {
+      favorites.push(recipe);
+    }
+
+    this.setState({ favorites });
   }
 
   render() {
@@ -108,15 +125,34 @@ class App extends Component {
                 changeSeason={this.changeSeason}
               />
             </div>
-            <button onClick={this.getSeasonal}>Get Seasonal Foods</button>
-            <button onClick={this.getRecipes}>get recipes</button>
+            <div className="form">
+              {this.state.fetchingI ? (
+                <CircularProgress style={progressStyle} />
+              ) : null}
+              <Button
+                onClick={this.getSeasonal}
+                variant="contained"
+                color="default">
+                Ingredients
+                <Search style={searchStyle} />
+              </Button>
+            </div>
           </div>
           <div className="float">
-            {this.state.fetching ? (
-              <div className="fetching">fetching</div>
-            ) : (
-              <div className="notFetching" />
-            )}
+            <div className="progressContainer">
+              {this.state.fetchingR ? (
+                <CircularProgress style={progressStyle} />
+              ) : null}
+              <Button
+                style={recipeButtonStyle}
+                className="buttonTest"
+                onClick={this.getRecipes}
+                variant="contained"
+                color="default">
+                Recipes
+                <Search style={searchStyle} />
+              </Button>
+            </div>
 
             <div className="lists">
               <VeggieList
@@ -138,7 +174,7 @@ class App extends Component {
                 add={this.addVeggie}
               />
             </div>
-            <RecipeList recipes={this.state.recipes} />
+            <RecipeList recipes={this.state.recipes} favorite={this.favorite} />
           </div>
         </div>
       </>
