@@ -103,7 +103,13 @@ class App extends Component {
   favorite(recipe) {
     let favorites = this.state.favorites;
 
-    if (!favorites.includes(recipe)) {
+    if (favorites.includes(recipe)) {
+      for (let i = 0; i < favorites.length; i++) {
+        if (favorites[i] === recipe) {
+          favorites.splice(i, 1);
+        }
+      }
+    } else {
       favorites.push(recipe);
     }
 
