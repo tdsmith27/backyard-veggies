@@ -1,59 +1,80 @@
 import React, { Fragment } from "react";
+import { FormControl, Select, MenuItem, InputLabel } from "@material-ui/core";
+import { formStyle, labelStyle, selectStyle } from "../../helpers";
 
-const StateSelect = ({ changeState }) => (
-  <select onChange={changeState}>
-    <option value="alabama">Alabama</option>
-    <option value="alaska">Alaska</option>
-    <option value="arizona">Arizona</option>
-    <option value="arkansas">Arkansas</option>
-    <option value="california">California</option>
-    <option value="colorado">Colorado</option>
-    <option value="connecticut">Connecticut</option>
-    <option value="delaware">Delaware</option>
-    <option value="washington-dc">District Of Columbia</option>
-    <option value="florida">Florida</option>
-    <option value="georgia">Georgia</option>
-    <option value="hawaii">Hawaii</option>
-    <option value="idaho">Idaho</option>
-    <option value="illinois">Illinois</option>
-    <option value="indiana">Indiana</option>
-    <option value="iowa">Iowa</option>
-    <option value="kansas">Kansas</option>
-    <option value="kentucky">Kentucky</option>
-    <option value="louisiana">Louisiana</option>
-    <option value="maine">Maine</option>
-    <option value="maryland">Maryland</option>
-    <option value="massachusetts">Massachusetts</option>
-    <option value="michigan">Michigan</option>
-    <option value="minnesota">Minnesota</option>
-    <option value="mississippi">Mississippi</option>
-    <option value="missouri">Missouri</option>
-    <option value="montana">Montana</option>
-    <option value="nebraska">Nebraska</option>
-    <option value="nevada">Nevada</option>
-    <option value="new-hampshire">New Hampshire</option>
-    <option value="new-jersey">New Jersey</option>
-    <option value="new-mexico">New Mexico</option>
-    <option value="new-york">New York</option>
-    <option value="north-carolina">North Carolina</option>
-    <option value="north-dakota">North Dakota</option>
-    <option value="ohio">Ohio</option>
-    <option value="oklahoma">Oklahoma</option>
-    <option value="oregon">Oregon</option>
-    <option value="pennsylvania">Pennsylvania</option>
-    <option value="rhode-island">Rhode Island</option>
-    <option value="south-carolina">South Carolina</option>
-    <option value="south-dakota">South Dakota</option>
-    <option value="tennessee">Tennessee</option>
-    <option value="texas">Texas</option>
-    <option value="utah">Utah</option>
-    <option value="vermont">Vermont</option>
-    <option value="virginia">Virginia</option>
-    <option value="washington">Washington</option>
-    <option value="west-virginia">West Virginia</option>
-    <option value="wisconsin">Wisconsin</option>
-    <option value="wyoming">Wyoming</option>
-  </select>
+const StateSelect = ({ changeState, state }) => (
+  <FormControl style={formStyle}>
+    <InputLabel style={labelStyle} htmlFor="age-simple">
+      State
+    </InputLabel>
+    <Select
+      style={selectStyle}
+      value={state}
+      onChange={changeState}
+      inputProps={{
+        state: "state",
+        id: "age-simple"
+      }}>
+      <MenuItem value="">
+        <em>None</em>
+      </MenuItem>
+      <MenuItem value="alabama">Alabama</MenuItem>
+      <MenuItem value="alaska">Alaska</MenuItem>
+      <MenuItem value="arizona">Arizona</MenuItem>
+      <MenuItem value="arkansas">Arkansas</MenuItem>
+      <MenuItem value="california">California</MenuItem>
+      <MenuItem value="colorado">Colorado</MenuItem>
+      <MenuItem value="connecticut">Connecticut</MenuItem>
+      <MenuItem value="delaware">Delaware</MenuItem>
+      <MenuItem value="washington-dc">District Of Columbia</MenuItem>
+      <MenuItem value="florida">Florida</MenuItem>
+      <MenuItem value="georgia">Georgia</MenuItem>
+      <MenuItem value="hawaii">Hawaii</MenuItem>
+      <MenuItem value="idaho">Idaho</MenuItem>
+      <MenuItem value="illinois">Illinois</MenuItem>
+      <MenuItem value="indiana">Indiana</MenuItem>
+      <MenuItem value="iowa">Iowa</MenuItem>
+      <MenuItem value="kansas">Kansas</MenuItem>
+      <MenuItem value="kentucky">Kentucky</MenuItem>
+      <MenuItem value="louisiana">Louisiana</MenuItem>
+      <MenuItem value="maine">Maine</MenuItem>
+      <MenuItem value="maryland">Maryland</MenuItem>
+      <MenuItem value="massachusetts">Massachusetts</MenuItem>
+      <MenuItem value="michigan">Michigan</MenuItem>
+      <MenuItem value="minnesota">Minnesota</MenuItem>
+      <MenuItem value="mississippi">Mississippi</MenuItem>
+      <MenuItem value="missouri">Missouri</MenuItem>
+      <MenuItem value="montana">Montana</MenuItem>
+      <MenuItem value="nebraska">Nebraska</MenuItem>
+      <MenuItem value="nevada">Nevada</MenuItem>
+      <MenuItem value="new-hampshire">New Hampshire</MenuItem>
+      <MenuItem value="new-jersey">New Jersey</MenuItem>
+      <MenuItem value="new-mexico">New Mexico</MenuItem>
+      <MenuItem value="new-york">New York</MenuItem>
+      <MenuItem value="north-carolina">North Carolina</MenuItem>
+      <MenuItem value="north-dakota">North Dakota</MenuItem>
+      <MenuItem value="ohio">Ohio</MenuItem>
+      <MenuItem value="oklahoma">Oklahoma</MenuItem>
+      <MenuItem value="oregon">Oregon</MenuItem>
+      <MenuItem value="pennsylvania">Pennsylvania</MenuItem>
+      <MenuItem value="rhode-island">Rhode Island</MenuItem>
+      <MenuItem value="south-carolina">South Carolina</MenuItem>
+      <MenuItem value="south-dakota">South Dakota</MenuItem>
+      <MenuItem value="tennessee">Tennessee</MenuItem>
+      <MenuItem value="texas">Texas</MenuItem>
+      <MenuItem value="utah">Utah</MenuItem>
+      <MenuItem value="vermont">Vermont</MenuItem>
+      <MenuItem value="virginia">Virginia</MenuItem>
+      <MenuItem value="washington">Washington</MenuItem>
+      <MenuItem value="west-virginia">West Virginia</MenuItem>
+      <MenuItem value="wisconsin">Wisconsin</MenuItem>
+      <MenuItem value="wyoming">Wyoming</MenuItem>
+    </Select>
+  </FormControl>
 );
+{
+  /* <select onChange={changeState}>
+    </select> */
+}
 
 export default StateSelect;

@@ -6,5 +6,18 @@ module.exports = {
       chain += `&excluded=${ingredient}`;
     }
     return chain;
+  },
+
+  formStyle: {
+    width: "200px",
+    margin: "10px"
+  },
+
+  labelStyle: {
+    fontSize: "15px"
+  },
+
+  selectStyle: {
+    fontSize: "22px"
   }
 };

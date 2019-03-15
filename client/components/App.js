@@ -96,38 +96,51 @@ class App extends Component {
   render() {
     return (
       <>
-        {this.state.fetching ? (
-          <div className="fetching">fetching</div>
-        ) : (
-          <div className="notFetching" />
-        )}
-        <div className="form">
-          <StateSelect changeState={this.changeState} />
-          <SeasonSelect changeSeason={this.changeSeason} />
-          <button onClick={this.getSeasonal}>Get Seasonal Foods</button>
+        <div className="overlay">
+          <div className="head">
+            <div className="form">
+              <StateSelect
+                state={this.state.state}
+                changeState={this.changeState}
+              />
+              <SeasonSelect
+                season={this.state.season}
+                changeSeason={this.changeSeason}
+              />
+            </div>
+            <button onClick={this.getSeasonal}>Get Seasonal Foods</button>
+            <button onClick={this.getRecipes}>get recipes</button>
+          </div>
+          <div className="float">
+            {this.state.fetching ? (
+              <div className="fetching">fetching</div>
+            ) : (
+              <div className="notFetching" />
+            )}
+
+            <div className="lists">
+              <VeggieList
+                list={"seasonal"}
+                veggies={this.state.seasonal}
+                remove={this.removeVeggie}
+                add={this.addVeggie}
+              />
+              <VeggieList
+                list={"search"}
+                veggies={this.state.search}
+                remove={this.removeVeggie}
+                add={this.addVeggie}
+              />
+              <VeggieList
+                list={"exclude"}
+                veggies={this.state.exclude}
+                remove={this.removeVeggie}
+                add={this.addVeggie}
+              />
+            </div>
+            <RecipeList recipes={this.state.recipes} />
+          </div>
         </div>
-        <button onClick={this.getRecipes}>get recipes</button>
-        <div className="lists">
-          <VeggieList
-            list={"seasonal"}
-            veggies={this.state.seasonal}
-            remove={this.removeVeggie}
-            add={this.addVeggie}
-          />
-          <VeggieList
-            list={"search"}
-            veggies={this.state.search}
-            remove={this.removeVeggie}
-            add={this.addVeggie}
-          />
-          <VeggieList
-            list={"exclude"}
-            veggies={this.state.exclude}
-            remove={this.removeVeggie}
-            add={this.addVeggie}
-          />
-        </div>
-        <RecipeList recipes={this.state.recipes} />
       </>
     );
   }
