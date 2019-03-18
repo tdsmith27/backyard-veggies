@@ -4,7 +4,8 @@
   "description": "This is my 2 day MVP project for Hack Reactor ATX-39",
   "main": "client/index.jsx",
   "scripts": {
-    "start": "nodemon server/index.js",
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
     "build": "webpack -d --watch"
   },
   "repository": {
