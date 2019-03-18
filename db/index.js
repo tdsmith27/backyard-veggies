@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-mongoose.connect(
-  "mongodb+srv://tdsmith27:recipes@seasonal-recipe-finder-zg3vg.mongodb.net/test?retryWrites=true"
+require("dotenv").config();
+mongoose.connect(process.env.DB_CONNECTION, () =>
+  console.log("database connection established")
 );
 
 const seasonalSchema = mongoose.Schema({

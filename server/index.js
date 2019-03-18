@@ -3,8 +3,8 @@ const bodyParser = require("body-parser");
 const Nightmare = require("nightmare");
 const db = require("../db/index");
 const Axios = require("axios");
-const API = require("../config");
 const { excludeChain } = require("../helpers");
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,8 +15,8 @@ app.use(express.static(__dirname + "./../public"));
 app.get("/recipes/:ingredients/", (req, res) => {
   let ingredients = req.params.ingredients;
   Axios.get(
-    `https://api.edamam.com/search?app_id=${API.id}&app_key=${
-      API.key
+    `https://api.edamam.com/search?app_id=${process.env.API_ID}&app_key=${
+      process.env.API_KEY
     }&q=${ingredients}`
   )
     .then(response => {
