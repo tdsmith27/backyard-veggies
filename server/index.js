@@ -4,7 +4,7 @@ const Nightmare = require("nightmare");
 const db = require("../db/index");
 const Axios = require("axios");
 const { excludeChain } = require("../helpers");
-require("dotenv").config();
+// require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3000;
