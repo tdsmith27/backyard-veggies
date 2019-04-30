@@ -4,7 +4,9 @@ const util = require("util");
 require("dotenv").config();
 
 mongoose.connect(
-  `mongodb+srv://${usr}:${pass}@seasonal-recipe-finder-zg3vg.mongodb.net/test?retryWrites=true`,
+  `mongodb+srv://${process.env.DB_USR}:${
+    process.env.DB_PASS
+  }@seasonal-recipe-finder-zg3vg.mongodb.net/test?retryWrites=true`,
   () => console.log("database connection established")
 );
 
