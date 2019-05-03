@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import { Check, Close } from "@material-ui/icons";
 

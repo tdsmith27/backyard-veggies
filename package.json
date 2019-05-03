@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "nodemon server/index.js",
-    "watch": "webpack --watch",
-    "build": "webpack --progress --profile"
+    "watch": "rimraf public/bundle.js && webpack --config-name development --watch",
+    "build": "rimraf public/bundle.js && webpack --config-name production --progress --profile"
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Axios from "axios";
 import StateSelect from "./StateSelect";
 import SeasonSelect from "./SeasonSelect";
-import VeggieList from "./VeggieList";
+import VeggieListContainer from "./VeggieListContainer";
 import RecipeList from "./RecipeList";
 import { Button, CircularProgress } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
@@ -160,26 +160,13 @@ class App extends Component {
               </Button>
             </div>
 
-            <div className="lists">
-              <VeggieList
-                list={"seasonal"}
-                veggies={this.state.seasonal}
-                remove={this.removeVeggie}
-                add={this.addVeggie}
-              />
-              <VeggieList
-                list={"search"}
-                veggies={this.state.search}
-                remove={this.removeVeggie}
-                add={this.addVeggie}
-              />
-              <VeggieList
-                list={"exclude"}
-                veggies={this.state.exclude}
-                remove={this.removeVeggie}
-                add={this.addVeggie}
-              />
-            </div>
+            <VeggieListContainer
+              seasonal={this.state.seasonal}
+              search={this.state.search}
+              exclude={this.state.exclude}
+              remove={this.removeVeggie}
+              add={this.addVeggie}
+            />
             <RecipeList recipes={this.state.recipes} favorite={this.favorite} />
           </div>
         </div>

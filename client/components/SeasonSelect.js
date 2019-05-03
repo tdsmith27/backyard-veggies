@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { FormControl, Select, MenuItem, InputLabel } from "@material-ui/core";
 import { formStyle, labelStyle, selectStyle } from "../../helpers";
 

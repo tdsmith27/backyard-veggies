@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import { Button } from "@material-ui/core";
 import { FavoriteBorder, Favorite } from "@material-ui/icons";
 import { favoriteButtonStyle, favoriteIconStyle } from "../../helpers";
