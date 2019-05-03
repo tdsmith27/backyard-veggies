@@ -110,35 +110,3 @@ const seed = async (state, season) => {
 };
 
 seedAll();
-// .then(seasonal => {
-//   let doc = { state: state, season: season, veggies: seasonal };
-//   // console.log("doc: ", doc);
-//   db.save(doc, (err, data) => {
-//     if (err) {
-//       console.log("err: ", err);
-//     } else {
-//       console.log(`${state}, ${season} saved to db`);
-//     }
-//   });
-// })
-// .catch(err => console.log("error in crawler"));
-
-// async (err, data) => {
-//   if (err) {
-//     console.log("err: ", err);
-//   } else if (data.length === 0) {
-//     const nightmare = new Nightmare();
-//     let seasonal = await nightmare
-//       .goto(`https://www.seasonalfoodguide.org/${state}/${season}`)
-//       .wait(".card-title")
-//       .evaluate(() => {
-//         return [...document.querySelectorAll(".card-title")].map(
-//           el => el.innerHTML
-//         );
-//       })
-//       .end();
-//     console.log("seasonal: ", seasonal);
-//   } else {
-//     console.log(`Ingredients for ${state} in ${season} already in db`);
-//   }
-// });
