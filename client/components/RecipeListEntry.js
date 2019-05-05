@@ -21,7 +21,11 @@ class RecipeListEntry extends Component {
         <Button
           onClick={() => {
             this.setState({ favorite: !this.state.favorite }, () => {
-              this.props.favorite(this.props.recipe);
+              this.props.editList(
+                "favorites",
+                this.props.recipe,
+                this.state.favorite
+              );
             });
           }}
           style={favoriteButtonStyle}

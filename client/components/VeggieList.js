@@ -1,7 +1,7 @@
 import React from "react";
 import VeggieListEntry from "./VeggieListEntry";
 
-const VeggieList = ({ list, veggies, remove, add }) => (
+const VeggieList = ({ list, veggies, editList }) => (
   <>
     <div className="listContainer">
       {veggies.length ? <p className="listHead">{list}</p> : null}
@@ -11,8 +11,7 @@ const VeggieList = ({ list, veggies, remove, add }) => (
             list={list}
             veggie={veggie}
             key={key}
-            remove={remove}
-            add={add}
+            editList={editList}
           />
         ))}
       </div>

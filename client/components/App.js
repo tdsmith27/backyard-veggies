@@ -19,10 +19,8 @@ class App extends Component {
 
     this.changeSelect = this.changeSelect.bind(this);
     this.getSeasonal = this.getSeasonal.bind(this);
-    this.removeVeggie = this.removeVeggie.bind(this);
-    this.addVeggie = this.addVeggie.bind(this);
     this.getRecipes = this.getRecipes.bind(this);
-    this.favorite = this.favorite.bind(this);
+    this.editList = this.editList.bind(this);
 
     this.state = {
       state: "alabama",
@@ -60,32 +58,26 @@ class App extends Component {
     });
   }
 
-  removeVeggie(veggie, listType) {
+  editList(listType, item, adding) {
     let list = this.state[listType];
+    console.log(listType, ":", list);
 
-    for (let i = 0; i < list.length; i++) {
-      if (list[i] === veggie) {
-        list.splice(i, 1);
+    if (adding) {
+      if (!list.includes(item)) {
+        list.push(item);
+      }
+    }
+    if (!adding) {
+      for (let i = 0; i < list.length; i++) {
+        if (list[i] === item) {
+          list.splice(i, 1);
+        }
       }
     }
 
-    if (listType === "seasonal") {
-      let exclude = this.state.exclude;
-      exclude.push(veggie);
-      this.setState({ listType: list, exclude });
-    } else {
-      this.setState({ listType: list });
-    }
-  }
-
-  addVeggie(veggie) {
-    let search = this.state.search;
-
-    if (!search.includes(veggie)) {
-      search.push(veggie);
-    }
-
-    this.setState({ search });
+    let newState = {};
+    newState[listType] = list;
+    this.setState(newState);
   }
 
   getRecipes() {
@@ -97,22 +89,6 @@ class App extends Component {
         })
         .catch(err => console.log("lol", err));
     });
-  }
-
-  favorite(recipe) {
-    let favorites = this.state.favorites;
-
-    if (favorites.includes(recipe)) {
-      for (let i = 0; i < favorites.length; i++) {
-        if (favorites[i] === recipe) {
-          favorites.splice(i, 1);
-        }
-      }
-    } else {
-      favorites.push(recipe);
-    }
-
-    this.setState({ favorites });
   }
 
   render() {
@@ -167,10 +143,9 @@ class App extends Component {
               seasonal={this.state.seasonal}
               search={this.state.search}
               exclude={this.state.exclude}
-              remove={this.removeVeggie}
-              add={this.addVeggie}
+              editList={this.editList}
             />
-            <RecipeList recipes={this.state.recipes} favorite={this.favorite} />
+            <RecipeList recipes={this.state.recipes} editList={this.editList} />
           </div>
         </div>
       </>

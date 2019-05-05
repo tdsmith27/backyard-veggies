@@ -9,8 +9,7 @@ const VeggieListContainer = props => (
       <VeggieList
         list={list}
         veggies={props[list]}
-        remove={props.remove}
-        add={props.add}
+        editList={props.editList}
         key={key}
       />
     ))}

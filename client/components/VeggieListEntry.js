@@ -17,14 +17,22 @@ const buttonStyle = {
   height: "40px"
 };
 
-const VeggieListEntry = ({ list, veggie, remove, add }) => (
+const VeggieListEntry = ({ list, veggie, editList }) => (
   <div className="veggie">
     {list === "seasonal" ? (
-      <IconButton style={buttonStyle} onClick={() => add(veggie)}>
+      <IconButton
+        style={buttonStyle}
+        onClick={() => editList("search", veggie, true)}>
         <Check style={checkStyle} color={"primary"} />
       </IconButton>
     ) : null}
-    <IconButton style={buttonStyle} onClick={() => remove(veggie, list)}>
+    <IconButton
+      style={buttonStyle}
+      onClick={() => {
+        list === "seasonal"
+          ? editList("exclude", veggie, true)
+          : editList(list, veggie, false);
+      }}>
       <Close style={closeStyle} color={"secondary"} />
     </IconButton>
     <div className="v">{veggie} </div>
