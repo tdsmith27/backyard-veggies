@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import StateSelect from "./StateSelect";
-import SeasonSelect from "./SeasonSelect";
+import Selector from "./Selector";
 import VeggieListContainer from "./VeggieListContainer";
 import RecipeList from "./RecipeList";
 import { Button, CircularProgress } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
-import { recipeButtonStyle, searchStyle, progressStyle } from "../../helpers";
+import {
+  recipeButtonStyle,
+  searchStyle,
+  progressStyle,
+  states,
+  seasons
+} from "../../helpers";
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +40,7 @@ class App extends Component {
   changeSelect(e, list) {
     let selection = e.target.value;
     let newState = {};
-    newState[list] = selection;
+    newState[list.toLowerCase()] = selection;
     this.setState(newState);
   }
 
@@ -116,12 +121,16 @@ class App extends Component {
         <div className="overlay">
           <div className="head">
             <div className="form">
-              <StateSelect
-                state={this.state.state}
+              <Selector
+                listLabel={"State"}
+                list={states}
+                value={this.state.state}
                 changeSelect={this.changeSelect}
               />
-              <SeasonSelect
-                season={this.state.season}
+              <Selector
+                listLabel={"Season"}
+                list={seasons}
+                value={this.state.season}
                 changeSelect={this.changeSelect}
               />
             </div>
