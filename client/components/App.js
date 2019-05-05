@@ -19,8 +19,8 @@ class App extends Component {
 
     this.changeSelect = this.changeSelect.bind(this);
     this.getSeasonal = this.getSeasonal.bind(this);
-    this.getRecipes = this.getRecipes.bind(this);
     this.editList = this.editList.bind(this);
+    this.getRecipes = this.getRecipes.bind(this);
 
     this.state = {
       state: "alabama",
