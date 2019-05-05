@@ -2,7 +2,7 @@ import React from "react";
 import { FormControl, Select, MenuItem, InputLabel } from "@material-ui/core";
 import { formStyle, labelStyle, selectStyle } from "../../helpers";
 
-const StateSelect = ({ changeState, state }) => (
+const StateSelect = ({ changeSelect, state }) => (
   <FormControl style={formStyle}>
     <InputLabel style={labelStyle} htmlFor="age-simple">
       State
@@ -10,7 +10,7 @@ const StateSelect = ({ changeState, state }) => (
     <Select
       style={selectStyle}
       value={state}
-      onChange={changeState}
+      onChange={e => changeSelect(e, "state")}
       inputProps={{
         state: "state",
         id: "age-simple"

@@ -2,7 +2,7 @@ import React from "react";
 import { FormControl, Select, MenuItem, InputLabel } from "@material-ui/core";
 import { formStyle, labelStyle, selectStyle } from "../../helpers";
 
-const SeasonSelect = ({ changeSeason, season }) => (
+const SeasonSelect = ({ changeSelect, season }) => (
   <FormControl style={formStyle}>
     <InputLabel style={labelStyle} htmlFor="age-simple">
       Month
@@ -10,7 +10,7 @@ const SeasonSelect = ({ changeSeason, season }) => (
     <Select
       style={selectStyle}
       value={season}
-      onChange={changeSeason}
+      onChange={e => changeSelect(e, "season")}
       inputProps={{
         state: "month",
         id: "age-simple"
@@ -32,8 +32,3 @@ const SeasonSelect = ({ changeSeason, season }) => (
 );
 
 export default SeasonSelect;
-
-{
-  /* <select onChange={changeSeason}>
-  </select> */
-}

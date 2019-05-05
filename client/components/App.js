@@ -12,8 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.changeState = this.changeState.bind(this);
-    this.changeSeason = this.changeSeason.bind(this);
+    this.changeSelect = this.changeSelect.bind(this);
     this.getSeasonal = this.getSeasonal.bind(this);
     this.removeVeggie = this.removeVeggie.bind(this);
     this.addVeggie = this.addVeggie.bind(this);
@@ -33,16 +32,11 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {}
-
-  changeState(e) {
-    let state = e.target.value;
-    this.setState({ state });
-  }
-
-  changeSeason(e) {
-    let season = e.target.value;
-    this.setState({ season });
+  changeSelect(e, list) {
+    let selection = e.target.value;
+    let newState = {};
+    newState[list] = selection;
+    this.setState(newState);
   }
 
   getSeasonal() {
@@ -124,11 +118,11 @@ class App extends Component {
             <div className="form">
               <StateSelect
                 state={this.state.state}
-                changeState={this.changeState}
+                changeSelect={this.changeSelect}
               />
               <SeasonSelect
                 season={this.state.season}
-                changeSeason={this.changeSeason}
+                changeSelect={this.changeSelect}
               />
             </div>
             <div className="form">
