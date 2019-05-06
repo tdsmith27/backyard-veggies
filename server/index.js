@@ -4,7 +4,6 @@ const Nightmare = require("nightmare");
 const db = require("../db/index");
 const Axios = require("axios");
 const { excludeChain } = require("../helpers");
-// require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -51,31 +50,7 @@ app.get("/seasonal/:state/:season", (req, res) => {
     if (err) {
       console.log("err: ", err);
     } else {
-      if (data.length === 0) {
-        const nightmare = new Nightmare();
-        nightmare
-          .goto(`https://www.seasonalfoodguide.org/${state}/${season}`)
-          .wait(".card-title")
-          .evaluate(() => {
-            return [...document.querySelectorAll(".card-title")].map(
-              el => el.innerHTML
-            );
-          })
-          .end()
-          .then(seasonal => {
-            let doc = { state: state, season: season, veggies: seasonal };
-            db.save(doc, (err, data) => {
-              if (err) {
-                console.log("err: ", err);
-              } else {
-                res.json(seasonal);
-              }
-            });
-          })
-          .catch(err => console.log("error in crawler"));
-      } else {
-        res.json(data[0].veggies);
-      }
+      res.json(data[0].veggies);
     }
   });
 });

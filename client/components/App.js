@@ -60,13 +60,13 @@ class App extends Component {
 
   editList(listType, item, adding) {
     let list = this.state[listType];
-    console.log(listType, ":", list);
 
     if (adding) {
       if (!list.includes(item)) {
         list.push(item);
       }
     }
+
     if (!adding) {
       for (let i = 0; i < list.length; i++) {
         if (list[i] === item) {

@@ -69,11 +69,6 @@ const months = [
   "december"
 ];
 
-// forEach state
-//  forEach month
-//    search db, if no results
-//      nightmare, save to db
-
 async function seedAll() {
   for (let state of states) {
     for (let month of months) {

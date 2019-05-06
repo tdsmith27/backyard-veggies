@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Nightmare = require("nightmare");
 const util = require("util");
 require("dotenv").config();
 
