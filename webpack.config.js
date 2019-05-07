@@ -48,17 +48,16 @@ module.exports = [
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: "James's House of Bundles",
-        template: __dirname + "/client/index.html", //create index.html with js script
+        title: "Bundletown",
+        template: __dirname + "/client/index.html",
         inject: "body",
         filename: "index.html"
       }),
       new MiniCssExtractPlugin({
-        //minify that css
         filename: "[name]-[hash].css",
         chunkFilename: "[id][hash].css"
       }),
-      new UglifyJsPlugin({ sourceMap: true }) //smash everything
+      new UglifyJsPlugin({ sourceMap: true })
     ],
     mode: "production"
   },
