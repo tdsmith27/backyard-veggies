@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + "./../public"));
 
 app.get("/recipes/:ingredients/", (req, res) => {
+  console.log("no exclude");
   let ingredients = req.params.ingredients;
   Axios.get(
     `https://api.edamam.com/search?app_id=${process.env.API_ID}&app_key=${
@@ -27,11 +28,12 @@ app.get("/recipes/:ingredients/", (req, res) => {
 });
 
 app.get("/recipes/:ingredients/:excluded", (req, res) => {
+  console.log("exclude");
   let ingredients = req.params.ingredients;
   let chain = excludeChain(req.params.excluded);
   Axios.get(
-    `https://api.edamam.com/search?app_id=${API.id}&app_key=${
-      API.key
+    `https://api.edamam.com/search?app_id=${process.env.API_ID}&app_key=${
+      process.env.API_KEY
     }&q=${ingredients}${chain}`
   )
     .then(response => {
