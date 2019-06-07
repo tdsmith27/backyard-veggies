@@ -4,16 +4,13 @@
 }
 
 .overlay {
-  background-image: url(./grass.jpg);
+  background-image: url(https://backyard-veggies.s3-us-west-2.amazonaws.com/grass.jpg);
   opacity: 0.9;
-  /* position: fixed; */
   width: 100%;
-  height: 100%;
-  /* z-index: 1000; */
 }
 
 .head {
-  height: 175px;
+  height: 20vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -23,9 +20,8 @@
 .float {
   background-color: #ebebeb;
   opacity: 0.8;
-  /* margin-top: 175px; */
   width: 100%;
-  height: 2000px;
+  min-height: 80vh;
   border-top: 3px solid aliceblue;
 }
 
