@@ -6,9 +6,10 @@ Welcome to backyard-veggies, a single page application built with React and Node
 2. Clone locally using `git clone https://github.com/tdsmith27/backyard-veggies.git`
 
    ###### From the root directory
-3. Build with `npm run watch`
-4. Start server with `npm run dev`
-5. Navigate to localhost:3000 to view development version of app
+3. Install dependencies with `npm install`
+4. Build with `npm run watch`
+5. Start server with `npm run dev`
+6. Navigate to localhost:3000 to view development version of app
 
 ## Live Deployed App
 http://backyard-veggies.com
