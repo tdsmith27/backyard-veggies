@@ -6,6 +6,19 @@ Welcome to backyard-veggies, a single page application built with React and Node
 
 http://backyard-veggies.com
 
+## Table of Contents
+
+1. [App Usage](#app-usage)
+2. [Developer Usage](#developer-usage)
+   <br>a. [Installation](#installation)
+   <br>b. [Database Setup](#database-setup)
+   <br>c. [API Setup](#to-set-up-api-access)
+   <br>d. [For Use in Development](#for-use-in-development)
+
+## App Usage
+
+<iframe class="imgur-embed" width="100%" height="798" frameborder="0" src="https://i.imgur.com/mycVTxz.gifv#embed"></iframe>
+
 ## Developer Usage
 
 #### Prerequisites
