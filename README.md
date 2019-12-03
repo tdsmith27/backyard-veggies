@@ -6,12 +6,14 @@ Welcome to backyard-veggies, a single page application built with React and Node
 
 http://backyard-veggies.com
 
-## Prerequisites
+## Developer Usage
+
+#### Prerequisites
 
 This application is built with Node and will require Node to be installed to run. To install Node, follow the [instructions](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) <br>
 <sub>_installing with nvm recommended_</sub>
 
-## Developer Usage
+#### Installation
 
 1. Navigate to [repo](https://github.com/tdsmith27/backyard-veggies)
 2. Clone locally using `git clone https://github.com/tdsmith27/backyard-veggies.git`
