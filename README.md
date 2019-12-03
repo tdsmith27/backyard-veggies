@@ -17,7 +17,8 @@ http://backyard-veggies.com
 
 ## App Usage
 
-<iframe class="imgur-embed" width="100%" height="798" frameborder="0" src="https://i.imgur.com/mycVTxz.gifv#embed"></iframe>
+<a href="https://imgur.com/mycVTxz" target=blank><img src="https://i.imgur.com/mycVTxzh.gif" title="source: imgur.com" /></a>
+<br><sub>_click to view in new tab_</sub>
 
 ## Developer Usage
 
